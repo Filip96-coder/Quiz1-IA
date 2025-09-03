@@ -1,0 +1,119 @@
+Documentación del Sistema de Lógica Difusa para Vestimenta
+
+1. Objetivo del sistema
+
+El sistema utiliza lógica difusa para recomendar el tipo de vestimenta adecuada según las condiciones climáticas de entrada:
+
+Temperatura (°C)
+
+Humedad (%)
+
+Intensidad de lluvia (0 = Sin lluvia, 1 = Ligera, 2 = Fuerte)
+
+La salida del sistema es un valor difuso (0 a 10), que luego se interpreta en categorías como:
+
+Muy ligera
+
+Ligera
+
+Abrigada
+
+Muy abrigada
+
+2. Tecnologías utilizadas
+
+Python 3 como lenguaje principal.
+
+scikit-fuzzy (skfuzzy) para la implementación de conjuntos difusos, funciones de membresía y reglas.
+
+Tkinter para la interfaz gráfica de usuario (GUI).
+
+3. Estructura principal del programa
+
+El sistema está organizado en dos clases principales:
+
+3.1 VentanaResultadosDifuso
+
+Clase que crea una ventana emergente con los resultados.
+
+Atributos principales:
+
+ventana: ventana emergente (Toplevel).
+
+Métodos:
+
+interpretar_lluvia(valor): traduce el número de lluvia en un texto descriptivo.
+
+interpretar_resultado(valor): interpreta el valor difuso y lo traduce a categoría, recomendación y descripción.
+
+centrar_ventana(): centra la ventana en la pantalla.
+
+nueva_consulta(): cierra la ventana para permitir un nuevo cálculo.
+
+3.2 SistemaLogicaDifusa
+
+Clase que configura el sistema de lógica difusa y maneja la interfaz principal.
+
+Atributos principales:
+
+sistema_ctrl: objeto que almacena las reglas difusas.
+
+temperatura, humedad, lluvia: variables de entrada.
+
+vestimenta: variable de salida.
+
+Métodos:
+
+configurar_sistema_difuso(): define las variables, funciones de membresía y reglas del sistema difuso.
+
+crear_interfaz(): construye la interfaz gráfica con campos de entrada, combobox y botón de cálculo.
+
+calcular_recomendacion(): procesa los datos ingresados, ejecuta la simulación difusa y abre la ventana de resultados.
+
+ejecutar(): inicia el bucle principal de Tkinter (mainloop).
+
+4. Flujo de ejecución
+
+El usuario abre el programa y ve la ventana principal.
+
+Ingresa temperatura, humedad y selecciona la intensidad de lluvia.
+
+Hace clic en Calcular Recomendación.
+
+El sistema aplica la lógica difusa:
+
+Fuzzificación de entradas.
+
+Evaluación de reglas difusas.
+
+Defuzzificación para obtener un valor final (0–10).
+
+Se abre la ventana de resultados con:
+
+Valores de entrada procesados.
+
+Valor numérico del resultado.
+
+Categoría de vestimenta.
+
+Recomendación y descripción.
+
+El usuario puede cerrar la ventana o hacer una nueva consulta.
+
+5. Ejemplo de uso
+
+Entrada:
+
+Temperatura = 10 °C
+
+Humedad = 80 %
+
+Lluvia = 2 (Fuerte)
+
+Salida:
+
+Valor difuso ≈ 8.7
+
+Categoría: Muy abrigada
+
+Recomendación: Abrigo grueso, bufanda y guantes.
